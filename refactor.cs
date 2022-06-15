@@ -39,9 +39,9 @@ namespace Interview_Refactor1
                 var leftOverC = int.Parse(c) - maxPies;
                 Console.WriteLine(leftOverA + " apple(s) left over, " + leftOverB + " lbs sugar left over, " + leftOverC + " lbs flour left over.");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("error");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }
