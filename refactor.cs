@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 namespace Interview_Refactor1
 {
     class Program
@@ -19,7 +19,7 @@ namespace Interview_Refactor1
                 Console.WriteLine("You can make:");
                 utility.Calc(apples, sugar, poundsOfflour);
                 Console.WriteLine("\n\nEnter to calculate, 'q' to quit!");
-            } while (!string.Equals(Console.ReadLine(), "Q"));
+            } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
     }
     public static class utility
