@@ -11,11 +11,23 @@ namespace Interview_Refactor1
             do
             {
                 Console.WriteLine("How many apples do you have?");
-                var apples = Console.ReadLine();
+                var apples = utility.ConvertNumberToInt(Console.ReadLine());
+                if (apples == 0){
+                    continue;
+                }
+
                 Console.WriteLine("How much sugar do you have?");
-                var sugar = Console.ReadLine();
+                var sugar = utility.ConvertNumberToInt(Console.ReadLine());
+                if (sugar == 0){
+                    continue;
+                }
+
                 Console.WriteLine("How many pounds of flour do you have?");
-                var poundsOfflour = Console.ReadLine();
+                var poundsOfflour = utility.ConvertNumberToInt(Console.ReadLine());
+                if (poundsOfflour == 0){
+                    continue;
+                }
+
                 Console.WriteLine("You can make:");
                 utility.Calc(apples, sugar, poundsOfflour);
                 Console.WriteLine("\n\nEnter to calculate, 'q' to quit!");
@@ -24,24 +36,37 @@ namespace Interview_Refactor1
     }
     public static class utility
     {
-        public static void Calc(string a, string b, string c)
+        public static void Calc(int a, int b, int c)
         {
             try
             {
-                var maxApples = (int.Parse(a) / 3);
-                var x = int.Parse(b) / 2;
-                var flourLeft =  int.Parse(c);
+                var maxApples = a / 3;
+                var x = b / 2;
+                var flourLeft =  c;
                 var maxPies = Math.Min(Math.Min(maxApples, x), flourLeft);
                 Console.WriteLine(maxPies + " apple pies!");
 
-                var leftOverA = int.Parse(a) - (maxPies * 3);
-                var leftOverB = int.Parse(b) - (maxPies * 2);
-                var leftOverC = int.Parse(c) - maxPies;
+                var leftOverA = a - (maxPies * 3);
+                var leftOverB = b - (maxPies * 2);
+                var leftOverC = c - maxPies;
                 Console.WriteLine(leftOverA + " apple(s) left over, " + leftOverB + " lbs sugar left over, " + leftOverC + " lbs flour left over.");
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
+            }
+        }
+
+        public static int ConvertNumberToInt(string input)
+        {
+            try
+            {
+                return int.Parse(input);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"Please enter value in numerical format. Press enter to calculate, 'q' to quit!");
+                return 0;
             }
         }
     }
