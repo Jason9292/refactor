@@ -36,20 +36,17 @@ namespace Interview_Refactor1
     }
     public static class utility
     {
-        public static void Calc(int a, int b, int c)
+        public static void Calc(int apples, int bananas, int flour)
         {
             try
             {
-                var maxApples = a / 3;
-                var x = b / 2;
-                var flourLeft =  c;
-                var maxPies = Math.Min(Math.Min(maxApples, x), flourLeft);
+                var maxPies = Math.Min(Math.Min((apples/3), (bananas/2)), flour);
                 Console.WriteLine(maxPies + " apple pies!");
 
-                var leftOverA = a - (maxPies * 3);
-                var leftOverB = b - (maxPies * 2);
-                var leftOverC = c - maxPies;
-                Console.WriteLine(leftOverA + " apple(s) left over, " + leftOverB + " lbs sugar left over, " + leftOverC + " lbs flour left over.");
+                var leftOverApples = apples - (maxPies * 3);
+                var leftOverBananas = bananas - (maxPies * 2);
+                var leftOverFlour = flour - maxPies;
+                Console.WriteLine(leftOverApples + " apple(s) left over, " + leftOverBananas + " lbs sugar left over, " + leftOverFlour + " lbs flour left over.");
             }
             catch (Exception e)
             {
@@ -65,7 +62,7 @@ namespace Interview_Refactor1
             }
             catch (Exception)
             {
-                Console.WriteLine($"Please enter value in numerical format. Press enter to calculate, 'q' to quit!");
+                Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                 return 0;
             }
         }
