@@ -11,25 +11,28 @@ namespace Interview_Refactor1
             do
             {
                 Console.WriteLine("How many apples do you have?");
-                var apples = generateApplePie.ConvertNumberToInt(Console.ReadLine());
-                if (apples == 0){
+                int apples;
+                if (!int.TryParse(Console.ReadLine(), out apples)){
+                    Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
 
                 Console.WriteLine("How much sugar do you have?");
-                var sugar = generateApplePie.ConvertNumberToInt(Console.ReadLine());
-                if (sugar == 0){
+                int sugar;
+                if (!int.TryParse(Console.ReadLine(), out sugar)){
+                    Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
 
                 Console.WriteLine("How many pounds of flour do you have?");
-                var poundsOfflour = generateApplePie.ConvertNumberToInt(Console.ReadLine());
-                if (poundsOfflour == 0){
+                int flour;
+                if (!int.TryParse(Console.ReadLine(), out flour)){
+                    Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
 
                 Console.WriteLine("You can make:");
-                generateApplePie.Calc(apples, sugar, poundsOfflour);
+                generateApplePie.Calc(apples, sugar, flour);
                 Console.WriteLine("\n\nEnter to calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
@@ -51,19 +54,6 @@ namespace Interview_Refactor1
             catch (Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
-            }
-        }
-
-        public static int ConvertNumberToInt(string input)
-        {
-            try
-            {
-                return int.Parse(input);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
-                return 0;
             }
         }
     }
