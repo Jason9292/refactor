@@ -11,30 +11,30 @@ namespace Interview_Refactor1
             do
             {
                 Console.WriteLine("How many apples do you have?");
-                var apples = utility.ConvertNumberToInt(Console.ReadLine());
+                var apples = generateApplePie.ConvertNumberToInt(Console.ReadLine());
                 if (apples == 0){
                     continue;
                 }
 
                 Console.WriteLine("How much sugar do you have?");
-                var sugar = utility.ConvertNumberToInt(Console.ReadLine());
+                var sugar = generateApplePie.ConvertNumberToInt(Console.ReadLine());
                 if (sugar == 0){
                     continue;
                 }
 
                 Console.WriteLine("How many pounds of flour do you have?");
-                var poundsOfflour = utility.ConvertNumberToInt(Console.ReadLine());
+                var poundsOfflour = generateApplePie.ConvertNumberToInt(Console.ReadLine());
                 if (poundsOfflour == 0){
                     continue;
                 }
 
                 Console.WriteLine("You can make:");
-                utility.Calc(apples, sugar, poundsOfflour);
+                generateApplePie.Calc(apples, sugar, poundsOfflour);
                 Console.WriteLine("\n\nEnter to calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
     }
-    public static class utility
+    public static class generateApplePie
     {
         public static void Calc(int apples, int bananas, int flour)
         {
