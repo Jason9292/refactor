@@ -31,30 +31,32 @@ namespace Interview_Refactor1
                     continue;
                 }
 
-                Console.WriteLine("You can make:");
-                generateApplePie.Calc(apples, sugar, flour);
+                generateApplePie.PieIngredients pieIngredients = generateApplePie.GeneratePieValues(apples, sugar, flour);
+                Console.WriteLine("You can make: " + pieIngredients.maxPies + " apple pies!");
+                Console.WriteLine(pieIngredients.leftOverApples + " apple(s) left over, " + pieIngredients.leftOverBananas + " lbs sugar left over, " + pieIngredients.leftOverFlour + " lbs flour left over.");
                 Console.WriteLine("\n\nEnter to calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
     }
     public static class generateApplePie
     {
-        public static void Calc(int apples, int bananas, int flour)
+        public static PieIngredients GeneratePieValues(int apples, int bananas, int flour)
         {
-            try
-            {
-                var maxPies = Math.Min(Math.Min((apples/3), (bananas/2)), flour);
-                Console.WriteLine(maxPies + " apple pies!");
+            PieIngredients pieIngredients = new PieIngredients();
 
-                var leftOverApples = apples - (maxPies * 3);
-                var leftOverBananas = bananas - (maxPies * 2);
-                var leftOverFlour = flour - maxPies;
-                Console.WriteLine(leftOverApples + " apple(s) left over, " + leftOverBananas + " lbs sugar left over, " + leftOverFlour + " lbs flour left over.");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Error: {e.Message}");
-            }
+            pieIngredients.maxPies = Math.Min(Math.Min((apples/3), (bananas/2)), flour);
+            pieIngredients.leftOverApples = apples - (pieIngredients.maxPies * 3);
+            pieIngredients.leftOverBananas = bananas - (pieIngredients.maxPies * 2);
+            pieIngredients.leftOverFlour = flour - pieIngredients.maxPies;
+
+            return pieIngredients;
+        }
+
+        public class PieIngredients{
+            public int maxPies;
+            public int leftOverApples;
+            public int leftOverBananas;
+            public int leftOverFlour;
         }
     }
 
