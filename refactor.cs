@@ -38,38 +38,38 @@ namespace Interview_Refactor1
                     continue;
                 }
 
-                generateApplePie.PieIngredients pieIngredients = generateApplePie.GeneratePieValues(apples, sugar, flour, cinnamon);
-                Console.WriteLine("You can make: " + pieIngredients.maxCinnamonPies + " apple pies with cinnamon, and " + pieIngredients.maxRegularPies + " apple pies without!");
-                Console.WriteLine(pieIngredients.leftOverApples + " apple(s) left over, " + pieIngredients.leftOverSugar + " lbs sugar left over, " + pieIngredients.leftOverFlour + " lbs flour left over, " + pieIngredients.leftOverCinnamon + " teaspoons cinnamon left over.");
+                ApplePieGenerator.PieValues pieValues = ApplePieGenerator.GeneratePieValues(apples, sugar, flour, cinnamon);
+                Console.WriteLine("You can make: " + pieValues.maxCinnamonPies + " apple pies with cinnamon, and " + pieValues.maxRegularPies + " apple pies without!");
+                Console.WriteLine(pieValues.leftOverApples + " apple(s) left over, " + pieValues.leftOverSugar + " lbs sugar left over, " + pieValues.leftOverFlour + " lbs flour left over, " + pieValues.leftOverCinnamon + " teaspoons cinnamon left over.");
                 Console.WriteLine("\n\nEnter to calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
     }
-    public static class generateApplePie
+    public class ApplePieGenerator
     {
-        public static PieIngredients GeneratePieValues(int apples, int sugar, int flour, int cinnamon)
+        public static PieValues GeneratePieValues(int apples, int sugar, int flour, int cinnamon)
         {
-            PieIngredients pieIngredients = new PieIngredients();
+            PieValues pieValues = new PieValues();
 
-            pieIngredients.maxRegularPies = Math.Min(Math.Min((apples/3), (sugar/2)), flour);
+            pieValues.maxRegularPies = Math.Min(Math.Min((apples/3), (sugar/2)), flour);
 
-            while (cinnamon > 0 && pieIngredients.maxRegularPies > 0){
-                pieIngredients.maxCinnamonPies++;
-                pieIngredients.maxRegularPies--;
+            while (cinnamon > 0 && pieValues.maxRegularPies > 0){
+                pieValues.maxCinnamonPies++;
+                pieValues.maxRegularPies--;
                 cinnamon--;
             }
 
-            pieIngredients.totalPies = pieIngredients.maxCinnamonPies + pieIngredients.maxRegularPies;
+            pieValues.totalPies = pieValues.maxCinnamonPies + pieValues.maxRegularPies;
 
-            pieIngredients.leftOverCinnamon = cinnamon;
-            pieIngredients.leftOverApples = apples - (pieIngredients.totalPies * 3);
-            pieIngredients.leftOverSugar = sugar - (pieIngredients.totalPies * 2);
-            pieIngredients.leftOverFlour = flour - pieIngredients.totalPies;
+            pieValues.leftOverCinnamon = cinnamon;
+            pieValues.leftOverApples = apples - (pieValues.totalPies * 3);
+            pieValues.leftOverSugar = sugar - (pieValues.totalPies * 2);
+            pieValues.leftOverFlour = flour - pieValues.totalPies;
 
-            return pieIngredients;
+            return pieValues;
         }
 
-        public class PieIngredients{
+        public class PieValues{
             public int maxRegularPies;
             public int maxCinnamonPies;
             public int totalPies;
