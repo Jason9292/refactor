@@ -1,0 +1,4 @@
+D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.csprojAssemblyReference.cache
+D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.csproj.CoreCompileInputs.cache
+D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.AssemblyInfoInputs.cache
+D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.AssemblyInfo.cs
