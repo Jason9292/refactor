@@ -2,3 +2,16 @@ D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.csprojAssembl
 D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.csproj.CoreCompileInputs.cache
 D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.AssemblyInfoInputs.cache
 D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.AssemblyInfo.cs
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\PieCalcTest.deps.json
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\PieCalcTest.runtimeconfig.json
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\PieCalcTest.runtimeconfig.dev.json
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\PieCalcTest.dll
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\PieCalcTest.pdb
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\refactor.dll
+D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\refactor.pdb
+D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.csproj.CopyComplete
+D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.dll
+D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.pdb

@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\refactor\\refactor.csproj",
+      "projectUniqueName": "D:\\GitHub\\refactor\\Refactor\\refactor.csproj",
       "projectName": "refactor",
-      "projectPath": "D:\\GitHub\\refactor\\refactor.csproj",
+      "projectPath": "D:\\GitHub\\refactor\\Refactor\\refactor.csproj",
       "packagesPath": "C:\\Users\\Jason\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\refactor\\obj\\",
+      "outputPath": "D:\\GitHub\\refactor\\Refactor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

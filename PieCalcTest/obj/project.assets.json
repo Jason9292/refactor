@@ -1611,6 +1611,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "refactor/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Microsoft.NETCore.App": "2.0.0"
+        },
+        "compile": {
+          "bin/placeholder/refactor.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/refactor.dll": {}
+        }
       }
     }
   },
@@ -5683,6 +5696,11 @@
         "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "refactor/1.0.0": {
+      "type": "project",
+      "path": "../Refactor/refactor.csproj",
+      "msbuildProject": "../Refactor/refactor.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5690,7 +5708,8 @@
       "MSTest.TestAdapter >= 1.2.1",
       "MSTest.TestFramework >= 1.2.1",
       "Microsoft.NET.Test.Sdk >= 15.7.0",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "refactor >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5722,7 +5741,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\GitHub\\refactor\\Refactor\\refactor.csproj": {
+              "projectPath": "D:\\GitHub\\refactor\\Refactor\\refactor.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
