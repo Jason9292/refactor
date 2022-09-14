@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Interview_Refactor1
@@ -24,19 +24,23 @@ namespace Interview_Refactor1
         private static void calculateAppliePies(){
             do
             {
+                List<PieGenerator.Ingredient> ingredients = new List<PieGenerator.Ingredient>();
+
                 Console.WriteLine("How many apples do you have?");
                 int apples;
                 if (!int.TryParse(Console.ReadLine(), out apples)){
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = apples, measurementUnit = "count", name = "apples"});
 
-                Console.WriteLine("How much sugar do you have?");
+                Console.WriteLine("How many pounds of sugar do you have?");
                 int sugar;
                 if (!int.TryParse(Console.ReadLine(), out sugar)){
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = sugar, measurementUnit = "pounds", name = "sugar"});
 
                 Console.WriteLine("How many pounds of flour do you have?");
                 int flour;
@@ -44,6 +48,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = flour, measurementUnit = "pounds", name = "flour"});
 
                 Console.WriteLine("How many teaspoons of cinnamon do you have?");
                 int cinnamon;
@@ -51,17 +56,26 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = cinnamon, measurementUnit = "teaspoons", name = "cinnamon"});
 
-                Console.WriteLine("How many sticks of butter do you have?");
-                int sticksOfButter;
-                if (!int.TryParse(Console.ReadLine(), out sticksOfButter)){
+                Console.WriteLine("How many tablespoons of butter do you have?");
+                int butter;
+                if (!int.TryParse(Console.ReadLine(), out butter)){
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = butter, measurementUnit = "tablespoons", name = "butter"});
 
-                PieGenerator.PieValues pieValues = PieGenerator.GenerateApplePieValues(apples, sugar, flour, cinnamon, sticksOfButter * 8);
-                Console.WriteLine("You can make: " + pieValues.maxCinnamonPies + " apple pies with cinnamon, and " + pieValues.maxRegularPies + " apple pies without!");
-                Console.WriteLine(pieValues.leftOverApples + " apple(s) left over, " + pieValues.leftOverSugar + " lbs sugar left over, " + pieValues.leftOverFlour + " lbs flour left over, " + pieValues.leftOverCinnamon + " teaspoons cinnamon left over, " + pieValues.leftOverButter + " tablespoons butter left over.");
+                var recipe = new Dictionary<string, int>()
+                {
+                    {"apples", 3}, 
+                    {"sugar", 2}, 
+                    {"flour", 1}, 
+                    {"butter", 6}, 
+                    {"cinnamon", 1}
+                };
+
+                PieGenerator.GeneratePieValues(ingredients, recipe, "apple");
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
@@ -69,12 +83,15 @@ namespace Interview_Refactor1
         private static void calculateBlueBerryPies(){
             do
             {
+                List<PieGenerator.Ingredient> ingredients = new List<PieGenerator.Ingredient>();
+
                 Console.WriteLine("How many cups of blueberries do you have?");
                 int blueberries;
                 if (!int.TryParse(Console.ReadLine(), out blueberries)){
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = blueberries, measurementUnit = "cups", name = "blueberries"});
 
                 Console.WriteLine("How many zests of lemon do you have?");
                 int lemonZest;
@@ -82,6 +99,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = lemonZest, measurementUnit = "zests", name = "zests of lemon"});
 
                 Console.WriteLine("How much sugar do you have?");
                 int sugar;
@@ -89,6 +107,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = sugar, measurementUnit = "cups", name = "sugar"});
 
                 Console.WriteLine("How many cups of milk do you have?");
                 int milk;
@@ -96,13 +115,15 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = milk, measurementUnit = "cups", name = "milk"});
 
-                Console.WriteLine("How many pounds of flour do you have?");
+                Console.WriteLine("How many cups of flour do you have?");
                 int flour;
                 if (!int.TryParse(Console.ReadLine(), out flour)){
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = flour, measurementUnit = "cups", name = "flour"});
 
                 Console.WriteLine("How many teaspoons of cinnamon do you have?");
                 int cinnamon;
@@ -110,76 +131,56 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = cinnamon, measurementUnit = "teaspoons", name = "cinnamon"});
 
-                Console.WriteLine("How many sticks of butter do you have?");
-                int sticksOfButter;
-                if (!int.TryParse(Console.ReadLine(), out sticksOfButter)){
+                Console.WriteLine("How many tablespoons of butter do you have?");
+                int butter;
+                if (!int.TryParse(Console.ReadLine(), out butter)){
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
+                ingredients.Add(new PieGenerator.Ingredient(){ quantity = butter, measurementUnit = "tablespoons", name = "butter"});
 
-                PieGenerator.PieValues pieValues = PieGenerator.GenerateBlueBerryPieValues(blueberries, lemonZest, milk, sugar, flour, cinnamon, sticksOfButter * 8);
-                Console.WriteLine("You can make: " + pieValues.maxRegularPies + " Blueberry pies!");
-                Console.WriteLine(pieValues.leftOverBlueberries + " blueberrys left over, " + pieValues.leftOverLemonZest + " lemon zest left over, " + pieValues.leftOverMilk + " milk left over, " + pieValues.leftOverSugar + " lbs sugar left over, " + pieValues.leftOverFlour + " lbs flour left over, " + pieValues.leftOverCinnamon + " teaspoons cinnamon left over, " + pieValues.leftOverButter + " tablespoons butter left over.");
+                var recipe = new Dictionary<string, int>()
+                {
+                    {"blueberries", 4}, 
+                    {"zests of lemon", 1}, 
+                    {"butter", 5}, 
+                    {"flour", 1}, 
+                    {"sugar", 1},
+                    {"milk", 1},
+                    {"cinnamon", 1}
+                };
+
+                PieGenerator.GeneratePieValues(ingredients, recipe, "blueberry");
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
     }
     public class PieGenerator
     {
-        public static PieValues GenerateApplePieValues(int apples, int sugar, int flour, int cinnamon, int tbspButter)
+        public static void GeneratePieValues(List<Ingredient> ingredients, Dictionary<string, int> recipe, string typeOfPie)
         {
-            PieValues pieValues = new PieValues();
+            List<int> findScarceIngredient = new List<int>();
 
-            pieValues.maxRegularPies = Math.Min(Math.Min((apples/3), (sugar/2)), Math.Min(flour, tbspButter/6));
-
-            while (cinnamon > 0 && pieValues.maxRegularPies > 0){
-                pieValues.maxCinnamonPies++;
-                pieValues.maxRegularPies--;
-                cinnamon--;
+            foreach(Ingredient ingrediant in ingredients){
+                findScarceIngredient.Add(ingrediant.quantity / recipe.First(p => p.Key == ingrediant.name).Value);
             }
 
-            int totalPies = pieValues.maxCinnamonPies + pieValues.maxRegularPies;
+            int amountOfPies = findScarceIngredient.Min();
 
-            pieValues.leftOverCinnamon = cinnamon;
-            pieValues.leftOverApples = apples - (totalPies * 3);
-            pieValues.leftOverSugar = sugar - (totalPies * 2);
-            pieValues.leftOverFlour = flour - totalPies;
-            pieValues.leftOverButter = tbspButter - (totalPies * 6);
-
-            return pieValues;
+            Console.WriteLine("You can make: " + amountOfPies + " " + typeOfPie + " pies!");
+            
+            foreach (Ingredient ingrediant in ingredients){
+                int leftoverValue = ingrediant.quantity - (amountOfPies * recipe.First(p => p.Key == ingrediant.name).Value);
+                Console.WriteLine(leftoverValue + " " + ingrediant.measurementUnit + " " + ingrediant.name + " left over.");
+            }
         }
 
-        public static PieValues GenerateBlueBerryPieValues(int blueberries, int lemonZest, int milk, int sugar, int flour, int cinnamon, int tbspButter)
-        {
-            PieValues pieValues = new PieValues();
-
-            List<int> findScarceIngredient = new List<int>() {blueberries/4, lemonZest, milk, sugar, flour, cinnamon, tbspButter/5};
-
-            pieValues.maxRegularPies = findScarceIngredient.Min();
-
-            pieValues.leftOverBlueberries = blueberries - (pieValues.maxRegularPies * 4);
-            pieValues.leftOverLemonZest = lemonZest - pieValues.maxRegularPies;
-            pieValues.leftOverMilk = milk - pieValues.maxRegularPies;
-            pieValues.leftOverSugar = sugar - pieValues.maxRegularPies;
-            pieValues.leftOverFlour = flour - pieValues.maxRegularPies;
-            pieValues.leftOverCinnamon = cinnamon - pieValues.maxRegularPies;
-            pieValues.leftOverButter = tbspButter - (pieValues.maxRegularPies * 5);
-
-            return pieValues;
-        }
-
-        public class PieValues{
-            public int maxRegularPies;
-            public int maxCinnamonPies;
-            public int leftOverApples;
-            public int leftOverBlueberries;
-            public int leftOverLemonZest;
-            public int leftOverSugar;
-            public int leftOverFlour;
-            public int leftOverCinnamon;
-            public int leftOverButter;
-            public int leftOverMilk;
+        public class Ingredient{
+            public int quantity;
+            public string measurementUnit;
+            public string name;
         }
     }
 
