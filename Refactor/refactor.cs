@@ -10,21 +10,27 @@ namespace Interview_Refactor1
             // want to maximize the number of apple pies we can make.
             // it takes 3 apples, 2 lbs of sugar, 1 pound of flour, 6 tbsp of butter, and 1 teaspoons of cinnamon to make 1 apple pie
             // this is intended to run on .NET Core
-            Console.WriteLine("Welcome to Barry's Pie shop. Enter 'a' to calculate how many apple pies you can make, for blueberry pies enter 'b'");
-            string typeOfPie = Console.ReadLine();
+            Console.WriteLine("Welcome to Barry's Pie shop. Enter 'a' to calculate how many apple pies you can make, for blueberry pies enter 'b', for espresso enter 'e', for pour over coffee enter 'p'");
+            string typeofCalculation = Console.ReadLine();
 
-            if (typeOfPie == "a"){
+            if (typeofCalculation == "a"){
                 calculateAppliePies();
             }
-            else{
+            else if (typeofCalculation == "b"){
                 calculateBlueBerryPies();
+            }
+            else if (typeofCalculation == "e"){
+                calculateEspresso();
+            }
+            else {
+                calculatePourOvers();
             }
         }
 
         private static void calculateAppliePies(){
             do
             {
-                List<PieGenerator.Ingredient> ingredients = getCommonPieIngredients();
+                List<RecipeIngredientCalculator.Ingredient> ingredients = getCommonPieIngredients();
 
                 Console.WriteLine("How many apples do you have?");
                 int apples;
@@ -32,7 +38,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
-                ingredients.Add(new PieGenerator.Ingredient(){ quantity = apples, measurementUnit = "count", name = "apples"});
+                ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = apples, measurementUnit = "count", name = "apples"});
 
                 Console.WriteLine("How many pounds of sugar do you have?");
                 int sugar;
@@ -40,7 +46,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
-                ingredients.Add(new PieGenerator.Ingredient(){ quantity = sugar, measurementUnit = "pounds", name = "sugar"});
+                ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = sugar, measurementUnit = "pounds", name = "sugar"});
 
                 Console.WriteLine("How many pounds of flour do you have?");
                 int flour;
@@ -48,13 +54,13 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
-                ingredients.Add(new PieGenerator.Ingredient(){ quantity = flour, measurementUnit = "pounds", name = "flour"});
+                ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = flour, measurementUnit = "pounds", name = "flour"});
 
-                List<PieGenerator.Ingredient> recipe = getApplePieRecipe();
+                List<RecipeIngredientCalculator.Ingredient> recipe = getApplePieRecipe();
 
-                int amountOfPies = PieGenerator.CalculateMaxPies(ingredients, recipe);
+                int amountOfPies = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfPies + " apple pies!");
-                PieGenerator.CalculateLeftovers(ingredients, recipe, amountOfPies);
+                RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfPies);
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
@@ -62,7 +68,7 @@ namespace Interview_Refactor1
         private static void calculateBlueBerryPies(){
             do
             {
-                List<PieGenerator.Ingredient> ingredients = getCommonPieIngredients();
+                List<RecipeIngredientCalculator.Ingredient> ingredients = getCommonPieIngredients();
 
                 Console.WriteLine("How many cups of blueberries do you have?");
                 int blueberries;
@@ -70,7 +76,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
-                ingredients.Add(new PieGenerator.Ingredient(){ quantity = blueberries, measurementUnit = "cups", name = "blueberries"});
+                ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = blueberries, measurementUnit = "cups", name = "blueberries"});
 
                 Console.WriteLine("How many zests of lemon do you have?");
                 int lemonZest;
@@ -78,7 +84,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
-                ingredients.Add(new PieGenerator.Ingredient(){ quantity = lemonZest, measurementUnit = "zests", name = "lemon"});
+                ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = lemonZest, measurementUnit = "zests", name = "lemon"});
 
                 Console.WriteLine("How much sugar do you have?");
                 int sugar;
@@ -86,7 +92,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
-                ingredients.Add(new PieGenerator.Ingredient(){ quantity = sugar, measurementUnit = "cups", name = "sugar"});
+                ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = sugar, measurementUnit = "cups", name = "sugar"});
 
                 Console.WriteLine("How many cups of milk do you have?");
                 int milk;
@@ -94,7 +100,7 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
-                ingredients.Add(new PieGenerator.Ingredient(){ quantity = milk, measurementUnit = "cups", name = "milk"});
+                ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = milk, measurementUnit = "cups", name = "milk"});
 
                 Console.WriteLine("How many cups of flour do you have?");
                 int flour;
@@ -102,67 +108,125 @@ namespace Interview_Refactor1
                     Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
                     continue;
                 }
-                ingredients.Add(new PieGenerator.Ingredient(){ quantity = flour, measurementUnit = "cups", name = "flour"});
+                ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = flour, measurementUnit = "cups", name = "flour"});
 
-                List<PieGenerator.Ingredient> recipe = getBlueberryPieRecipe();
+                List<RecipeIngredientCalculator.Ingredient> recipe = getBlueberryPieRecipe();
                 
-                int amountOfPies = PieGenerator.CalculateMaxPies(ingredients, recipe);
+                int amountOfPies = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfPies + " blueberry pies!");
-                PieGenerator.CalculateLeftovers(ingredients, recipe, amountOfPies);
+                RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfPies);
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
 
-        public static List<PieGenerator.Ingredient> getCommonPieIngredients()
+        private static void calculateEspresso(){
+            do
+            {
+                List<RecipeIngredientCalculator.Ingredient> ingredients = getCommonCoffeeIngredients();
+
+                List<RecipeIngredientCalculator.Ingredient> recipe = getEspressoRecipe();
+                
+                int amountOfEspressos = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
+                Console.WriteLine("You can make: " + amountOfEspressos + " Espressos!");
+                RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfEspressos);
+                Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
+            } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
+        }
+
+        private static void calculatePourOvers(){
+            do
+            {
+                List<RecipeIngredientCalculator.Ingredient> ingredients = getCommonCoffeeIngredients();
+
+                List<RecipeIngredientCalculator.Ingredient> recipe = getPourOverRecipe();
+                
+                int amountOfCoffees = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
+                Console.WriteLine("You can make: " + amountOfCoffees + " Pour Over Coffees!");
+                RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfCoffees);
+                Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
+            } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
+        }
+
+        public static List<RecipeIngredientCalculator.Ingredient> getCommonPieIngredients()
         {
-            List<PieGenerator.Ingredient> ingrediants = new List<PieGenerator.Ingredient>();
+            List<RecipeIngredientCalculator.Ingredient> ingrediants = new List<RecipeIngredientCalculator.Ingredient>();
             
             Console.WriteLine("How many teaspoons of cinnamon do you have?");
             int cinnamon;
             if (!int.TryParse(Console.ReadLine(), out cinnamon)){
                 Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
             }
-            ingrediants.Add(new PieGenerator.Ingredient(){ quantity = cinnamon, measurementUnit = "teaspoons", name = "cinnamon"});
+            ingrediants.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = cinnamon, measurementUnit = "teaspoons", name = "cinnamon"});
 
             Console.WriteLine("How many tablespoons of butter do you have?");
             int butter;
             if (!int.TryParse(Console.ReadLine(), out butter)){
                 Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
             }
-            ingrediants.Add(new PieGenerator.Ingredient(){ quantity = butter, measurementUnit = "tablespoons", name = "butter"});
+            ingrediants.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = butter, measurementUnit = "tablespoons", name = "butter"});
 
             return ingrediants;
         }
 
-        public static List<PieGenerator.Ingredient> getApplePieRecipe()
+        public static List<RecipeIngredientCalculator.Ingredient> getCommonCoffeeIngredients()
         {
-            List<PieGenerator.Ingredient> recipe = new List<PieGenerator.Ingredient>();
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 3, measurementUnit = "count", name = "apples"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 2, measurementUnit = "pounds", name = "sugar"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 1, measurementUnit = "pounds", name = "flour"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 6, measurementUnit = "tablespoons", name = "butter"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 1, measurementUnit = "teaspoons", name = "cinnamon"});
+            List<RecipeIngredientCalculator.Ingredient> ingrediants = new List<RecipeIngredientCalculator.Ingredient>();
+            
+            Console.WriteLine("How many pounds of coffee do you have?");
+            int coffee;
+            if (!int.TryParse(Console.ReadLine(), out coffee)){
+                Console.WriteLine($"Please enter value in numerical format. Press enter to start over, 'q' to quit!");
+            }
+            ingrediants.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = coffee*453, measurementUnit = "grams", name = "coffee"});
+
+            return ingrediants;
+        }
+
+        public static List<RecipeIngredientCalculator.Ingredient> getApplePieRecipe()
+        {
+            List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 3, measurementUnit = "count", name = "apples"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 2, measurementUnit = "pounds", name = "sugar"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "pounds", name = "flour"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 6, measurementUnit = "tablespoons", name = "butter"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "teaspoons", name = "cinnamon"});
 
             return recipe;
         }
 
-        public static List<PieGenerator.Ingredient> getBlueberryPieRecipe()
+        public static List<RecipeIngredientCalculator.Ingredient> getBlueberryPieRecipe()
         {
-            List<PieGenerator.Ingredient> recipe = new List<PieGenerator.Ingredient>();
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 4, measurementUnit = "cups", name = "blueberries"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 1, measurementUnit = "zests", name = "lemon"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 5, measurementUnit = "tablespoons", name = "butter"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "flour"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "sugar"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "milk"});
-            recipe.Add(new PieGenerator.Ingredient(){ quantity = 1, measurementUnit = "teaspoons", name = "cinnamon"});
+            List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 4, measurementUnit = "cups", name = "blueberries"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "zests", name = "lemon"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 5, measurementUnit = "tablespoons", name = "butter"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "flour"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "sugar"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "milk"});
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "teaspoons", name = "cinnamon"});
+
+            return recipe;
+        }
+
+        public static List<RecipeIngredientCalculator.Ingredient> getEspressoRecipe()
+        {
+            List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 8, measurementUnit = "grams", name = "coffee"});
+
+            return recipe;
+        }
+
+        public static List<RecipeIngredientCalculator.Ingredient> getPourOverRecipe()
+        {
+            List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
+            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 22, measurementUnit = "grams", name = "coffee"});
 
             return recipe;
         }
     }
-    public class PieGenerator
+    public class RecipeIngredientCalculator
     {
-        public static int CalculateMaxPies(List<Ingredient> ingredients, List<Ingredient> recipe)
+        public static int CalculateMaxAmount(List<Ingredient> ingredients, List<Ingredient> recipe)
         {
             List<int> findScarceIngredient = new List<int>();
 
