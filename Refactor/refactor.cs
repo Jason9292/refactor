@@ -75,7 +75,9 @@ namespace Interview_Refactor1
                     {"cinnamon", 1}
                 };
 
-                PieGenerator.GeneratePieValues(ingredients, recipe, "apple");
+                int amountOfPies = PieGenerator.CalculateMaxPies(ingredients, recipe);
+                Console.WriteLine("You can make: " + amountOfPies + " blueberry pies!");
+                PieGenerator.CalculateLeftovers(ingredients, recipe, amountOfPies);
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
@@ -152,14 +154,16 @@ namespace Interview_Refactor1
                     {"cinnamon", 1}
                 };
 
-                PieGenerator.GeneratePieValues(ingredients, recipe, "blueberry");
+                int amountOfPies = PieGenerator.CalculateMaxPies(ingredients, recipe);
+                Console.WriteLine("You can make: " + amountOfPies + " blueberry pies!");
+                PieGenerator.CalculateLeftovers(ingredients, recipe, amountOfPies);
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
     }
     public class PieGenerator
     {
-        public static void GeneratePieValues(List<Ingredient> ingredients, Dictionary<string, int> recipe, string typeOfPie)
+        public static int CalculateMaxPies(List<Ingredient> ingredients, Dictionary<string, int> recipe)
         {
             List<int> findScarceIngredient = new List<int>();
 
@@ -167,10 +171,11 @@ namespace Interview_Refactor1
                 findScarceIngredient.Add(ingrediant.quantity / recipe.First(p => p.Key == ingrediant.name).Value);
             }
 
-            int amountOfPies = findScarceIngredient.Min();
+            return findScarceIngredient.Min();
+        }
 
-            Console.WriteLine("You can make: " + amountOfPies + " " + typeOfPie + " pies!");
-            
+        public static void CalculateLeftovers(List<Ingredient> ingredients, Dictionary<string, int> recipe, int amountOfPies)
+        {
             foreach (Ingredient ingrediant in ingredients){
                 int leftoverValue = ingrediant.quantity - (amountOfPies * recipe.First(p => p.Key == ingrediant.name).Value);
                 Console.WriteLine(leftoverValue + " " + ingrediant.measurementUnit + " " + ingrediant.name + " left over.");
