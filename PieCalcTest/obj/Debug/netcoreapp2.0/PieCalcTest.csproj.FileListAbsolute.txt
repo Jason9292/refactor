@@ -15,3 +15,10 @@ D:\GitHub\refactor\PieCalcTest\bin\Debug\netcoreapp2.0\refactor.pdb
 D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.csproj.CopyComplete
 D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.dll
 D:\GitHub\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.pdb
+C:\compile\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.csproj.AssemblyReference.cache
+C:\compile\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\compile\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.AssemblyInfoInputs.cache
+C:\compile\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.AssemblyInfo.cs
+C:\compile\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.csproj.CoreCompileInputs.cache
+C:\compile\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.dll
+C:\compile\refactor\PieCalcTest\obj\Debug\netcoreapp2.0\PieCalcTest.pdb

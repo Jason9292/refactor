@@ -20,3 +20,16 @@ D:\GitHub\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.AssemblyInfoInputs.
 D:\GitHub\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.AssemblyInfo.cs
 D:\GitHub\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.dll
 D:\GitHub\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.pdb
+C:\compile\refactor\Refactor\bin\Debug\netcoreapp2.0\refactor.deps.json
+C:\compile\refactor\Refactor\bin\Debug\netcoreapp2.0\refactor.runtimeconfig.json
+C:\compile\refactor\Refactor\bin\Debug\netcoreapp2.0\refactor.runtimeconfig.dev.json
+C:\compile\refactor\Refactor\bin\Debug\netcoreapp2.0\refactor.dll
+C:\compile\refactor\Refactor\bin\Debug\netcoreapp2.0\refactor.pdb
+C:\compile\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.csproj.AssemblyReference.cache
+C:\compile\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.GeneratedMSBuildEditorConfig.editorconfig
+C:\compile\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.AssemblyInfoInputs.cache
+C:\compile\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.AssemblyInfo.cs
+C:\compile\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.csproj.CoreCompileInputs.cache
+C:\compile\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.dll
+C:\compile\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.pdb
+C:\compile\refactor\Refactor\obj\Debug\netcoreapp2.0\refactor.genruntimeconfig.cache
