@@ -60,9 +60,15 @@ namespace Interview_Refactor1
 
                 int amountOfPies = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfPies + " apple pies!");
-                RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfPies);
+                printLeftovers(RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfPies));
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
+        }
+
+        private static void printLeftovers(List<RecipeIngredientCalculator.Ingredient> leftovers){
+            foreach (RecipeIngredientCalculator.Ingredient leftover in leftovers){
+                Console.WriteLine(leftover.quantity + " " + leftover.measurementUnit + " " + leftover.name + " left over.");
+            }
         }
 
         private static void calculateBlueBerryPies(){
@@ -114,7 +120,7 @@ namespace Interview_Refactor1
                 
                 int amountOfPies = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfPies + " blueberry pies!");
-                RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfPies);
+                printLeftovers(RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfPies));
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
@@ -128,7 +134,7 @@ namespace Interview_Refactor1
                 
                 int amountOfEspressos = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfEspressos + " Espressos!");
-                RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfEspressos);
+                printLeftovers(RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfEspressos));
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
@@ -142,7 +148,7 @@ namespace Interview_Refactor1
                 
                 int amountOfCoffees = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfCoffees + " Pour Over Coffees!");
-                RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfCoffees);
+                printLeftovers(RecipeIngredientCalculator.CalculateLeftovers(ingredients, recipe, amountOfCoffees));
                 Console.WriteLine("\n\nEnter to re-calculate, 'q' to quit!");
             } while (!string.Equals(Console.ReadLine().ToUpper(), "Q"));
         }
@@ -238,13 +244,14 @@ namespace Interview_Refactor1
             return findScarceIngredient.Min();
         }
 
-        public static void CalculateLeftovers(List<Ingredient> ingredients, List<Ingredient> recipe, int amountOfPies)
+        public static List<Ingredient> CalculateLeftovers(List<Ingredient> ingredients, List<Ingredient> recipe, int amountOfPies)
         {
+            List<Ingredient> leftovers = new List<RecipeIngredientCalculator.Ingredient>();
             foreach (Ingredient ingrediant in ingredients){
                 List<Ingredient> recipeIngredient = recipe.Where(p => p.name == ingrediant.name).ToList();
-                int leftoverValue = ingrediant.quantity - (amountOfPies * recipeIngredient[0].quantity);
-                Console.WriteLine(leftoverValue + " " + ingrediant.measurementUnit + " " + ingrediant.name + " left over.");
+                leftovers.Add(new Ingredient(){ quantity = ingrediant.quantity - (amountOfPies * recipeIngredient[0].quantity), measurementUnit = ingrediant.measurementUnit, name = ingrediant.name});
             }
+            return leftovers;
         }
 
         public class Ingredient{
