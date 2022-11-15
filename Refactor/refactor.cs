@@ -13,17 +13,19 @@ namespace Interview_Refactor1
             Console.WriteLine("Welcome to Barry's Pie shop. Enter 'a' to calculate how many apple pies you can make, for blueberry pies enter 'b', for espresso enter 'e', for pour over coffee enter 'p'");
             string typeofCalculation = Console.ReadLine();
 
-            if (typeofCalculation == "a"){
-                calculateAppliePies();
-            }
-            else if (typeofCalculation == "b"){
-                calculateBlueBerryPies();
-            }
-            else if (typeofCalculation == "e"){
-                calculateEspresso();
-            }
-            else {
-                calculatePourOvers();
+            switch (typeofCalculation){
+                case "a":
+                    calculateAppliePies();
+                    break;
+                case "b":
+                    calculateBlueBerryPies();
+                    break;
+                case "e":
+                    calculateEspresso();
+                    break;
+                default:
+                    calculatePourOvers();
+                    break;
             }
         }
 
