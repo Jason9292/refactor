@@ -207,30 +207,36 @@ namespace Interview_Refactor1
         public static List<RecipeIngredientCalculator.Ingredient> getBlueberryPieRecipe()
         {
             List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 4, measurementUnit = "cups", name = "blueberries"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "zests", name = "lemon"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 5, measurementUnit = "tablespoons", name = "butter"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "flour"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "sugar"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "cups", name = "milk"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "teaspoons", name = "cinnamon"});
 
+            using (StreamReader r = new StreamReader("recipes/BlueberryPie.json"))
+            {
+                 string json = r.ReadToEnd();
+                 recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
+            }
             return recipe;
         }
 
         public static List<RecipeIngredientCalculator.Ingredient> getEspressoRecipe()
         {
             List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 8, measurementUnit = "grams", name = "coffee"});
 
+            using (StreamReader r = new StreamReader("recipes/Espresso.json"))
+            {
+                 string json = r.ReadToEnd();
+                 recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
+            }
             return recipe;
         }
 
         public static List<RecipeIngredientCalculator.Ingredient> getPourOverRecipe()
         {
             List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 22, measurementUnit = "grams", name = "coffee"});
 
+            using (StreamReader r = new StreamReader("recipes/PourOver.json"))
+            {
+                 string json = r.ReadToEnd();
+                 recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
+            }
             return recipe;
         }
     }
