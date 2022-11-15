@@ -1,0 +1,37 @@
+[
+	{
+		"quantity": 4,
+		"measurementUnit": "cups",
+		"name": "blueberries"
+	},
+	{
+		"quantity": 1,
+		"measurementUnit": "zests",
+		"name": "lemon"
+	},
+	{
+		"quantity": 5,
+		"measurementUnit": "tablespoons",
+		"name": "butter"
+	},
+	{
+		"quantity": 1,
+		"measurementUnit": "cups",
+		"name": "flour"
+	},
+	{
+		"quantity": 1,
+		"measurementUnit": "cups",
+		"name": "sugar"
+	},
+	{
+		"quantity": 1,
+		"measurementUnit": "cups",
+		"name": "milk"
+	},
+	{
+		"quantity": 1,
+		"measurementUnit": "teaspoons",
+		"name": "cinnamon"
+	}
+]

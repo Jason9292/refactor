@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using Newtonsoft.Json;
 namespace Interview_Refactor1
 {
     class Program
@@ -193,12 +195,12 @@ namespace Interview_Refactor1
         public static List<RecipeIngredientCalculator.Ingredient> getApplePieRecipe()
         {
             List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 3, measurementUnit = "count", name = "apples"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 2, measurementUnit = "pounds", name = "sugar"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "pounds", name = "flour"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 6, measurementUnit = "tablespoons", name = "butter"});
-            recipe.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = 1, measurementUnit = "teaspoons", name = "cinnamon"});
 
+            using (StreamReader r = new StreamReader("recipes/ApplePie.json"))
+            {
+                 string json = r.ReadToEnd();
+                 recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
+            }
             return recipe;
         }
 

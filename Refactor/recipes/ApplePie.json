@@ -1,0 +1,27 @@
+[
+	{
+		"quantity": 3,
+		"measurementUnit": count,
+		"name": "apples"
+	},
+	{
+		"quantity": 2,
+		"measurementUnit": pounds,
+		"name": "sugar"
+	},
+	{
+		"quantity": 1,
+		"measurementUnit": pounds,
+		"name": "flour"
+	},
+	{
+		"quantity": 6,
+		"measurementUnit": tablespoons,
+		"name": "butter"
+	},
+	{
+		"quantity": 1,
+		"measurementUnit": teaspoons,
+		"name": "cinnamon"
+	}
+]
