@@ -60,7 +60,7 @@ namespace Interview_Refactor1
                 }
                 ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = flour, measurementUnit = "pounds", name = "flour"});
 
-                List<RecipeIngredientCalculator.Ingredient> recipe = getApplePieRecipe();
+                List<RecipeIngredientCalculator.Ingredient> recipe = getRecipe("ApplePie");
 
                 int amountOfPies = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfPies + " apple pies!");
@@ -120,7 +120,7 @@ namespace Interview_Refactor1
                 }
                 ingredients.Add(new RecipeIngredientCalculator.Ingredient(){ quantity = flour, measurementUnit = "cups", name = "flour"});
 
-                List<RecipeIngredientCalculator.Ingredient> recipe = getBlueberryPieRecipe();
+                List<RecipeIngredientCalculator.Ingredient> recipe = getRecipe("BlueberryPie");
                 
                 int amountOfPies = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfPies + " blueberry pies!");
@@ -134,7 +134,7 @@ namespace Interview_Refactor1
             {
                 List<RecipeIngredientCalculator.Ingredient> ingredients = getCommonCoffeeIngredients();
 
-                List<RecipeIngredientCalculator.Ingredient> recipe = getEspressoRecipe();
+                List<RecipeIngredientCalculator.Ingredient> recipe = getRecipe("Espresso");
                 
                 int amountOfEspressos = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfEspressos + " Espressos!");
@@ -148,7 +148,7 @@ namespace Interview_Refactor1
             {
                 List<RecipeIngredientCalculator.Ingredient> ingredients = getCommonCoffeeIngredients();
 
-                List<RecipeIngredientCalculator.Ingredient> recipe = getPourOverRecipe();
+                List<RecipeIngredientCalculator.Ingredient> recipe = getRecipe("PourOver");
                 
                 int amountOfCoffees = RecipeIngredientCalculator.CalculateMaxAmount(ingredients, recipe);
                 Console.WriteLine("You can make: " + amountOfCoffees + " Pour Over Coffees!");
@@ -192,47 +192,11 @@ namespace Interview_Refactor1
             return ingrediants;
         }
 
-        public static List<RecipeIngredientCalculator.Ingredient> getApplePieRecipe()
+        public static List<RecipeIngredientCalculator.Ingredient> getRecipe(string recipeType)
         {
             List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
 
-            using (StreamReader r = new StreamReader("recipes/ApplePie.json"))
-            {
-                 string json = r.ReadToEnd();
-                 recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
-            }
-            return recipe;
-        }
-
-        public static List<RecipeIngredientCalculator.Ingredient> getBlueberryPieRecipe()
-        {
-            List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
-
-            using (StreamReader r = new StreamReader("recipes/BlueberryPie.json"))
-            {
-                 string json = r.ReadToEnd();
-                 recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
-            }
-            return recipe;
-        }
-
-        public static List<RecipeIngredientCalculator.Ingredient> getEspressoRecipe()
-        {
-            List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
-
-            using (StreamReader r = new StreamReader("recipes/Espresso.json"))
-            {
-                 string json = r.ReadToEnd();
-                 recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
-            }
-            return recipe;
-        }
-
-        public static List<RecipeIngredientCalculator.Ingredient> getPourOverRecipe()
-        {
-            List<RecipeIngredientCalculator.Ingredient> recipe = new List<RecipeIngredientCalculator.Ingredient>();
-
-            using (StreamReader r = new StreamReader("recipes/PourOver.json"))
+            using (StreamReader r = new StreamReader("recipes/"+ recipeType + ".json"))
             {
                  string json = r.ReadToEnd();
                  recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
