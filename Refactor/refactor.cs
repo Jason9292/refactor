@@ -12,23 +12,55 @@ namespace Interview_Refactor1
             // want to maximize the number of apple pies we can make.
             // it takes 3 apples, 2 lbs of sugar, 1 pound of flour, 6 tbsp of butter, and 1 teaspoons of cinnamon to make 1 apple pie
             // this is intended to run on .NET Core
-            Console.WriteLine("Welcome to Barry's Pie shop. Enter 'a' to calculate how many apple pies you can make, for blueberry pies enter 'b', for espresso enter 'e', for pour over coffee enter 'p'");
-            string typeofCalculation = Console.ReadLine();
+            string typeofCalculation = printOptions();
 
+            foreach ()
             switch (typeofCalculation){
-                case "a":
+                case "ApplePie":
                     calculateAppliePies();
                     break;
-                case "b":
+                case "BlueBerryPie":
                     calculateBlueBerryPies();
                     break;
-                case "e":
+                case "Espresso":
                     calculateEspresso();
                     break;
                 default:
                     calculatePourOvers();
                     break;
             }
+        }
+
+        public string GetTypeOfCalculation(){
+            List<RecipeIngredientCalculator.Ingredient> recipes = getListOfRecipes();
+            Console.WriteLine("Welcome to Barry's Pie shop.");
+
+            int option = 1;
+
+            foreach (RecipeIngredientCalculator.Ingredient recipe in recipes){
+                recipe.selectValue = option;
+                option++;
+                Console.WriteLine($"Enter {recipe.selectValue} to calculate {recipe.name}");
+            }
+            string typeofCalculation = Console.ReadLine();
+
+            foreach (RecipeIngredientCalculator.Ingredient recipe in recipes){
+                if (recipe.selectValue == (int)typeofCalculation){
+                    return recipe.name;
+                }
+            }
+        }
+
+        public static List<RecipeIngredientCalculator.Ingredient> getListOfRecipes()
+        {
+            List<RecipeIngredientCalculator.Ingredient> recipes = new List<RecipeIngredientCalculator.Ingredient>();
+
+            using (StreamReader r = new StreamReader("recipes/"))
+            {
+                 string json = r.ReadToEnd();
+                 recipe = JsonConvert.DeserializeObject<List<RecipeIngredientCalculator.Ingredient>>(json);
+            }
+            return recipes;
         }
 
         private static void calculateAppliePies(){
@@ -232,6 +264,7 @@ namespace Interview_Refactor1
             public int quantity;
             public string measurementUnit;
             public string name;
+            public int selectValue;
         }
     }
 
